@@ -1,0 +1,24 @@
+#! /bin/bash
+# to print dates from today till end of the month
+
+set -e
+
+SECONDS=$(date +%s)
+# echo ${SECONDS}
+
+CURR_MONTH=$(date +%m)
+MONTH=$(date +%m)
+# echo ${CURR_MONTH}
+
+
+while [[ ${MONTH} -eq ${CURR_MONTH} ]]
+do
+	echo "$(date --date=@${SECONDS})"
+	SECONDS=$(( ${SECONDS}+( 24*60*60 ) ))
+	MONTH=$(date +%m --date=@${SECONDS})
+done
+
+
+
+
+

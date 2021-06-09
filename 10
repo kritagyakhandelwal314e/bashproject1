@@ -1,0 +1,16 @@
+#! /bin/bash
+# to print difference between two dates
+
+set -e
+
+echo "Enter the first Date in the string format <YYYYMMDD>: "
+read DATE1
+echo "Enter the second Date in the string format <YYYYMMDD>: "
+read DATE2
+SEC_DIFF=$(($(date +%s -d ${DATE1})-$(date +%s -d ${DATE2})))
+
+DAY_DIFF=$((${SEC_DIFF}/(24*60*60)))
+
+echo "day difference: ${DAY_DIFF}"
+
+

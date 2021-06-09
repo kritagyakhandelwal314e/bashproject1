@@ -1,0 +1,28 @@
+#! /bin/bash
+
+
+set -e
+
+UTILITIES=$(cat ${1})
+touch test
+
+for UTILITY in ${UTILITIES[*]}
+do
+	INFO=$(apt-cache policy ${UTILITY})
+	INFO_ARR=(${INFO})
+	# echo ${INFO_ARR[*]}
+	if [[ -z ${INFO} ]] 
+	then
+		echo "${UTILITY}: can not be found in repository"
+	elif [[ ${INFO_ARR[2]} == "(none)" ]]
+	then
+		echo " ${UTILITY}: is not installed"
+	else
+		echo "${UTILITY}: version is ${INFO_ARR[2]}"
+	fi
+	# echo "${UTILITY} :  ${INFO_ARR[2]}"
+done
+
+
+
+

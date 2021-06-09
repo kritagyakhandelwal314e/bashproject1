@@ -1,0 +1,16 @@
+#! /bin/bash
+# to print current file-system
+set -e
+
+FEILDS=$(blkid)
+
+for FEILD in ${FEILDS}
+do
+	if [[ ${FEILD} == "TYPE"* ]]
+	then
+		echo ${FEILD}
+	fi
+done
+
+
+
